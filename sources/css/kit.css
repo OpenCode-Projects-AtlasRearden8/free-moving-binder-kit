@@ -1,0 +1,308 @@
+/* Calm Move Kit — shared print stylesheet (Letter, US 8.5in x 11in). */
+
+:root {
+  --ink: #26303c;
+  --soft: #5b6b7c;
+  --line: #8aa0b4;
+  --faint: #d8e2ea;
+  --paper: #ffffff;
+  --accent: #b26a3d;
+  --accent-soft: #f6e7db;
+  --accent-ink: #8a4c26;
+}
+
+@page {
+  size: Letter;
+  margin: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+}
+
+body {
+  font-family: "Liberation Sans", "DejaVu Sans", Arial, sans-serif;
+  color: var(--ink);
+  font-size: 10.5pt;
+  line-height: 1.35;
+}
+
+.page {
+  width: 8.5in;
+  height: 11in;
+  box-sizing: border-box;
+  padding: 0.55in 0.65in 0.62in 0.65in;
+  position: relative;
+  page-break-after: always;
+}
+
+.page:last-child {
+  page-break-after: auto;
+}
+
+/* ---- page header band ---- */
+.band {
+  border-bottom: 2.5pt solid var(--accent);
+  padding-bottom: 6pt;
+  margin-bottom: 12pt;
+}
+
+.band .kicker {
+  font-size: 8pt;
+  letter-spacing: 2.2pt;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin: 0 0 2pt 0;
+  font-weight: bold;
+}
+
+.band h1 {
+  font-size: 20pt;
+  margin: 0;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.band .sub {
+  margin: 3pt 0 0 0;
+  color: var(--soft);
+  font-size: 9.5pt;
+}
+
+.foot {
+  position: absolute;
+  bottom: 0.34in;
+  left: 0.65in;
+  right: 0.65in;
+  font-size: 7.5pt;
+  color: var(--soft);
+  border-top: 0.6pt solid var(--faint);
+  padding-top: 4pt;
+  text-align: center;
+  letter-spacing: 0.6pt;
+}
+
+/* ---- generic helpers ---- */
+.lead { font-size: 11pt; color: var(--soft); margin: 0 0 10pt 0; }
+.mono { font-family: "Liberation Mono", "DejaVu Sans Mono", monospace; }
+.center { text-align: center; }
+.small { font-size: 8.5pt; color: var(--soft); }
+.muted { color: var(--soft); }
+.hint {
+  background: var(--accent-soft);
+  border-left: 3pt solid var(--accent);
+  padding: 7pt 9pt;
+  font-size: 9.5pt;
+  margin: 10pt 0 0 0;
+}
+.hint strong { color: var(--accent-ink); }
+
+/* ---- getting-started page ---- */
+.gs .greet { font-size: 15pt; margin: 0 0 4pt 0; }
+.gs-meta { margin: 0 0 14pt 0; }
+.gs-box {
+  border: 1.2pt solid var(--line);
+  border-radius: 8pt;
+  padding: 12pt 14pt 10pt 14pt;
+  margin: 0 0 12pt 0;
+}
+.gs-box h2 {
+  margin: 0 0 8pt 0;
+  font-size: 12pt;
+  color: var(--accent-ink);
+  letter-spacing: 0.8pt;
+  text-transform: uppercase;
+}
+.gs-box ul, .gs-box ol { margin: 0; padding-left: 16pt; }
+.gs-box li { margin-bottom: 6pt; }
+.gs-box li:last-child { margin-bottom: 0; }
+.gs-home {
+  border-top: 2pt solid var(--accent);
+  border-bottom: 2pt solid var(--accent);
+  padding: 9pt 2pt;
+  font-size: 9pt;
+  color: var(--soft);
+}
+
+/* ---- checklist tables ---- */
+table.grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  margin-bottom: 10pt;
+}
+table.grid th {
+  background: #eef3f7;
+  border: 0.9pt solid var(--line);
+  padding: 5pt 6pt;
+  text-align: left;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.8pt;
+  color: #3d4b59;
+}
+table.grid td {
+  border: 0.9pt solid var(--line);
+  padding: 6pt 6pt;
+  vertical-align: top;
+}
+table.grid tr.sect td {
+  background: #f6ede5;
+  color: var(--accent-ink);
+  font-weight: bold;
+  letter-spacing: 0.8pt;
+  text-transform: uppercase;
+  font-size: 8.5pt;
+}
+.boxcell { width: 26pt; text-align: center; font-size: 12pt; }
+.fill { color: #b9c6d1; }
+
+/* ---- cut cards (labels, fragile cards) ---- */
+.cutline { color: var(--soft); font-size: 8pt; }
+
+table.cut {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+table.cut { page-break-inside: avoid; }
+table.cut td { padding: 9pt; vertical-align: top; } /* tightened per sheet via .cut-td when needed */
+table.cut.cut-tight td { padding: 5pt 9pt; }
+
+.card {
+  border: 1.6pt dashed var(--line);
+  border-radius: 8pt;
+  padding: 10pt 12pt;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+/* ---- box labels ---- */
+.labelcard .room {
+  font-size: 15pt;
+  font-weight: bold;
+  color: var(--ink);
+  margin: 0 0 2pt 0;
+}
+.labelcard .nums {
+  font-size: 8.5pt;
+  color: var(--soft);
+  margin: 0 0 6pt 0;
+}
+.labelcard .write {
+  border-top: 0.8pt dashed var(--line);
+  height: 26pt;
+}
+.labelcard .prio {
+  margin: 8pt 0 2pt 0;
+  font-size: 8.5pt;
+  color: var(--soft);
+  letter-spacing: 1pt;
+}
+.circ {
+  display: inline-block;
+  width: 13pt;
+  height: 13pt;
+  border: 1pt solid var(--ink);
+  border-radius: 7pt;
+  text-align: center;
+  font-size: 8pt;
+  margin-left: 5pt;
+  padding-top: 0.5pt;
+}
+
+/* ---- spine strips ---- */
+.spine {
+  border: 2pt solid var(--ink);
+  margin: 0 auto 16pt auto;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+.spine .rot {
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* ---- calendar ---- */
+table.cal { width: 100%; border-collapse: collapse; table-layout: fixed; }
+table.cal th {
+  border: 0.9pt solid var(--line);
+  background: #eef3f7;
+  font-size: 8.5pt;
+  padding: 4pt;
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+}
+table.cal td {
+  border: 0.9pt solid var(--line);
+  height: 0.98in;
+  vertical-align: top;
+  padding: 3pt;
+  font-size: 8pt;
+  color: var(--soft);
+}
+table.cal td.blank { background: #f3f5f7; border-style: double; }
+
+/* ---- fragile cards ---- */
+.fragile { text-align: center; }
+.card.fragile { padding: 6pt 10pt; }
+.fragile .f-top {
+  font-size: 17pt;
+  font-weight: bold;
+  letter-spacing: 4pt;
+  color: #9c3418;
+  margin: 0;
+}
+.fragile .f-sub {
+  font-size: 9.5pt;
+  letter-spacing: 2.5pt;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 2pt 0 6pt 0;
+}
+.fragile .f-arrow { font-size: 20pt; color: #9c3418; }
+.fragile .f-room { border-bottom: 1pt solid var(--line); margin: 12pt auto 0 auto; width: 80%; font-size: 8pt; color: var(--soft); }
+.fragile .f-flip {
+  margin-top: 8pt;
+  font-size: 8pt;
+  color: var(--soft);
+  border-top: 0.8pt dashed var(--line);
+  padding-top: 4pt;
+}
+
+/* ---- big single cards ---- */
+.bigcard {
+  border: 2pt solid var(--accent);
+  border-radius: 12pt;
+  padding: 18pt 22pt;
+  box-sizing: border-box;
+  min-height: 5.6in;
+  height: auto;
+}
+.bigcard h2 {
+  margin: 0 0 2pt 0;
+  font-size: 21pt;
+  color: var(--accent-ink);
+}
+.bigcard .tagline { color: var(--soft); font-size: 10pt; margin: 0 0 10pt 0; }
+.stepnum {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  border-radius: 10pt;
+  font-weight: bold;
+  font-size: 10pt;
+  width: 16pt;
+  text-align: center;
+  margin-right: 6pt;
+}
+ul.tick { list-style: none; padding-left: 4pt; margin: 4pt 0 8pt 0; }
+ul.tick li { padding-left: 20pt; text-indent: -20pt; margin-bottom: 4pt; }
+ul.tick li:before { content: "\2610\00a0\00a0"; font-size: 11pt; }
